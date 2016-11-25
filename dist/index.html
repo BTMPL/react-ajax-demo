@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      body, html {
+        font-family: Arial;
+        font-size: 16px;
+        line-height: 1.6;
+        color: #444;
+        background: #e7e7e7;
+      }
+
+      article {
+        width: 400px;
+        margin: 15px auto;
+        background: white;
+        padding: 15px;
+        position: relative;
+      }
+
+      article.preloading {
+        animation: 0.5s opacity infinite alternate;
+      }
+
+      @keyframes opacity {
+        0% { opacity: 0.6 }
+        100% { opacity: 1 }
+      }
+
+      article .image {
+        height: 200px;
+        margin-bottom: 15px;
+        background-size: cover;
+        background-position: center center;
+      }
+
+      article.preloading .image--preloading {
+        background: #d3d3d3;
+      }
+
+      article h1 {
+        font-size: 1.5rem;
+        line-height: 1.6;
+        min-height: calc(1.5rem * 1.6);
+      }
+
+      article h1.header--preloading {
+        background: #d3d3d3;
+      }
+
+      article .content--preloading::before,
+      article .content--preloading::after {
+        content: ' ';
+        height: 30px;
+        display: block;
+        background: linear-gradient(
+          to bottom,
+          white,
+          white 25%,
+          #d3d3d3 25%,
+          #d3d3d3 50%,
+          white 50%,
+          white 75%,
+          #d3d3d3 75%,
+          #d3d3d3
+        );
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="bundle.js"></script>
+  </body>
+
+</html>
