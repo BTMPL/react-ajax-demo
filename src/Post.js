@@ -1,23 +1,8 @@
 import React from "react";
 
 class Post extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      title: props.title,
-      content: props.content,
-      image: props.image,
-      id: props.id
-    }
-  }
-
-  componentWillReceiveProps(nextProps) {
-    this.setState(nextProps);
-  }
-
   render() {
-    if(!(this.state.title && this.state.content && this.state.image)) {
+    if(!(this.props.title && this.props.content && this.props.image)) {
       return (
         <article className="preloading">
           <div className="image image--preloading"></div>
@@ -34,9 +19,9 @@ class Post extends React.Component {
        */
       return (
         <article>
-          <div className="image" style={{backgroundImage: 'url(' + this.state.image + ')'}}></div>
-          <h1>{this.state.title}</h1>
-          <div className="content" dangerouslySetInnerHTML={{__html:this.state.content}}></div>
+          <div className="image" style={{backgroundImage: 'url(' + this.props.image + ')'}}></div>
+          <h1>{this.props.title}</h1>
+          <div className="content" dangerouslySetInnerHTML={{__html:this.props.content}}></div>
         </article>
       );
     }
